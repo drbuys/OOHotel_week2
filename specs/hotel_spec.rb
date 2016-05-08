@@ -37,8 +37,6 @@ class TestHotel < MiniTest::Test
     assert_equal([], @sheldor.guests)
   end
 
-
-
   def test_set_room_types_to_numbers
     assert_equal(3, @sheldor.set_room_types_to_numbers(@room5))
   end
