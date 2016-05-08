@@ -2,10 +2,10 @@ class Hotel
 
   attr_accessor :name, :rooms, :guests
 
-  def initialize(name, rooms)
+  def initialize(name, rooms, guests)
     @name = name
     @rooms = rooms
-    @guests = []
+    @guests = guests
   end
 
   def set_room_types_to_numbers(room)
@@ -39,7 +39,8 @@ class Hotel
     # avail = check_availability(@rooms[room])
     if room != nil # && avail != nil
       @rooms[room.number - 1].add_guest(guest)
-      return @guests << guest
+      @guests << guest
+      return room.number
     else
       return "Sorry, we don't have a suitable room for you"
     end
