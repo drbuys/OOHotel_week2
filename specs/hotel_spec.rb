@@ -41,14 +41,6 @@ class TestHotel < MiniTest::Test
     assert_equal(3, @sheldor.set_room_types_to_numbers(@room5))
   end
 
-  # def test_check_availability_is_nil
-  #   assert_equal(nil, @sheldor.check_availability(@room6))
-  # end
-  #
-  # def test_check_availability_is_available
-  #   assert_equal(@room5, @sheldor.check_availability(@room5))
-  # end
-
   def test_suitability_of_rooms_for_guest3
     assert_equal(@room2, @sheldor.find_suitable(@guest3))
   end

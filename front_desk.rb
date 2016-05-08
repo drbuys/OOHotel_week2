@@ -5,6 +5,8 @@ require_relative('room.rb')
 
 class FrontDesk
 
+  attr_accessor :all_guests
+
   def initialize
     @guest1 = People.new("Dave Jnr", 5, 2)
     @guest2 = People.new("Sir Walter", 2, 2)
@@ -14,6 +16,7 @@ class FrontDesk
     @guest6 = People.new("Jean Grey", 3, 2)
     @all_guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
     @guests = []
+
     @room1 = Room.new(1, "double", 120, [])
     @room2 = Room.new(2, "single", 80, [])
     @room3 = Room.new(3, "double", 100, [])
@@ -23,8 +26,6 @@ class FrontDesk
     @rooms = [@room1, @room2, @room3, @room4, @room5, @room6]
 
     @sheldor = Hotel.new("Sheldor", @rooms, @guests)
-
-
   end
 
 
@@ -43,7 +44,7 @@ class FrontDesk
           @all_guests.find { |n| print "#{n.name.cyan.on_yellow.bold}\n"}
           puts ""
           guest_answer = gets.chomp
-          guest = @all_guests.find { |n| n.name = guest_answer}
+          guest = @all_guests.find { |n| n.name == guest_answer}
           puts "\nThank you #{guest.name}, lets see if we have anything suitable and available for you..."
           room = @sheldor.check_in(guest)
           sleep(3)
@@ -51,8 +52,7 @@ class FrontDesk
           puts "checking".red.on_cyan.blink
           sleep (3)
           puts "You will be staying in room #{room}, I'll have one of our bell boys will take your bags. \nI hope you enjoy your stay\n"
-          @all_guests.reject { |g| g == @guests}
-          print @all_guests.inspect
+          @all_guests.delete_if { |g| g == guest}
           sleep(4)
         elsif want == "n"
           puts "I'm afraid if you don't have a reservation, we are unable to help you today!"
