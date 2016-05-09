@@ -51,7 +51,7 @@ class FrontDesk
           puts "It looks like we have a room available for you."
           puts "checking".red.on_cyan.blink
           sleep (3)
-          puts "You will be staying in room #{room}, I'll have one of our bell boys will take your bags. \nI hope you enjoy your stay\n"
+          puts "You will be staying in room #{room}, I'll have one of our bell boys take your bags up. \nI hope you enjoy your stay\n"
           @all_guests.delete_if { |g| g == guest}
           sleep(4)
         elsif want == "n"
