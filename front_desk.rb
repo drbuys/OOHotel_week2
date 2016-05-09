@@ -65,7 +65,7 @@ class FrontDesk
         @guests.find { |n| print "#{n.name.cyan.on_yellow.bold}\n"}
         puts ""
         leaving_guest = gets.chomp
-        guest = @guests.find { |n| n.name = leaving_guest}
+        guest = @guests.find { |n| n.name == leaving_guest}
         puts "Thank you #{guest.name}, lets get you checked out..."
         @sheldor.check_out(guest)
         puts "We hope you enjoyed your stay at the #{@sheldor.name.red.bold}"
